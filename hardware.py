@@ -18,14 +18,14 @@
 
 # DAY 2 ~ colored LEDs, resistors and jumper cables
 
-from machine import Pin
-import time
+# from machine import Pin
+# import time
 
-onboardLED = Pin(25, Pin.OUT)
+# onboardLED = Pin(25, Pin.OUT)
 
-red = Pin(18, Pin.OUT)
-yellow = Pin(19, Pin.OUT)
-green = Pin(20, Pin.OUT)
+# red = Pin(18, Pin.OUT)
+# yellow = Pin(19, Pin.OUT)
+# green = Pin(20, Pin.OUT)
 
 # red.value(1)
 # yellow.value(1)
@@ -57,28 +57,48 @@ green = Pin(20, Pin.OUT)
 
 #     counter += 1
 
-counter = 1
 
-while counter < 15:
-    onboardLED.value(1)
-    print(counter)
+# # Cycle through each LED color
+# counter = 1
 
-    red.value(1)
-    yellow.value(0)
-    green.value(0)
-    time.sleep(0.2)
+# while counter < 15:
+#     onboardLED.value(1)
+#     print(counter)
 
-    red.value(0)
-    yellow.value(1)
-    green.value(0)
-    time.sleep(0.2)
+#     red.value(1)
+#     yellow.value(0)
+#     green.value(0)
+#     time.sleep(0.2)
 
-    red.value(0)
-    yellow.value(0)
-    green.value(1)
-    time.sleep(0.2)
+#     red.value(0)
+#     yellow.value(1)
+#     green.value(0)
+#     time.sleep(0.2)
 
-    onboardLED.value(0)
-    green.value(0)
+#     red.value(0)
+#     yellow.value(0)
+#     green.value(1)
+#     time.sleep(0.2)
 
-    counter += 1
+#     onboardLED.value(0)
+#     green.value(0)
+
+#     counter += 1
+
+
+# Day 3 ~ adding buttons to activate responses on the PICO
+
+# Imports
+from machine import Pin
+import time
+
+# Set button name with GPIO pin number, set the pin as INPUT and use pull down
+    #Pull down is a builtin funcionality on the controller to lower the voltage in the GPIO pin so that it 
+    #registers the 3.3V signal sent by the button. Pins can float between 0V-3.3V, so it can't detect the signal.
+button1 = Pin(13, Pin.IN, Pin.PULL_DOWN) 
+
+while True: # forever and ever loop
+    time.sleep(0.2) # quick nap
+
+    if button1.value() == 1:
+        print("NOOO YOU PUSHED THE BUTTON")
