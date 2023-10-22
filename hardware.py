@@ -1,14 +1,84 @@
+# DAY 1 ~ blinking the onboard LED
+
+# from machine import Pin
+# from time import sleep
+
+# onboardLED = Pin(25, Pin.OUT)
+
+# print("LED starts flashing...")
+# while True:
+#     try:
+#         onboardLED.toggle()
+#         sleep(1) # sleep 1sec
+#     except KeyboardInterrupt:
+#         break
+# onboardLED.off()
+# print("Finished.")
+
+
+# DAY 2 ~ colored LEDs, resistors and jumper cables
+
 from machine import Pin
-from time import sleep
+import time
 
-pin = Pin("LED", Pin.OUT)
+onboardLED = Pin(25, Pin.OUT)
 
-print("LED starts flashing...")
-while True:
-    try:
-        pin.toggle()
-        sleep(1) # sleep 1sec
-    except KeyboardInterrupt:
-        break
-pin.off()
-print("Finished.")
+red = Pin(18, Pin.OUT)
+yellow = Pin(19, Pin.OUT)
+green = Pin(20, Pin.OUT)
+
+# red.value(1)
+# yellow.value(1)
+# green.value(1)
+
+# time.sleep(5)
+
+# red.value(0)
+# yellow.value(0)
+# green.value(0)
+
+# counter = 1 #Setting the counter
+
+# while counter < 11:
+#     print(counter)
+#     #LEDS on
+#     red.value(1)
+#     yellow.value(1)
+#     green.value(1)
+
+#     time.sleep(0.5)
+
+#     #LEDs off
+#     red.value(0)
+#     yellow.value(0)
+#     green.value(0)
+
+#     time.sleep(0.5)
+
+#     counter += 1
+
+counter = 1
+
+while counter < 15:
+    onboardLED.value(1)
+    print(counter)
+
+    red.value(1)
+    yellow.value(0)
+    green.value(0)
+    time.sleep(0.2)
+
+    red.value(0)
+    yellow.value(1)
+    green.value(0)
+    time.sleep(0.2)
+
+    red.value(0)
+    yellow.value(0)
+    green.value(1)
+    time.sleep(0.2)
+
+    onboardLED.value(0)
+    green.value(0)
+
+    counter += 1
