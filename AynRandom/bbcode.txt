@@ -1,6 +1,10 @@
-272 land
-63 sun
-275 too
-11 huge
-100 don't
-215 such
+5 five
+6 six
+1 one
+10 ten
+2 two
+9 nine
+4 four
+8 eight
+7 seven
+3 three
