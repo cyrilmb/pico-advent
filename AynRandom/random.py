@@ -18,4 +18,7 @@ def divide(l, n):
 
 n = 1
 pyramid = divide(s, n)
-print(pyramid)
+
+last_words = [sublist[-1] for sublist in pyramid]
+
+print(last_words)
