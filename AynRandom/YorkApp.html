@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+
+<div>
+    User ID: <input type="text" id="uid">
+    <br>
+    First Name: <input type="text" id="fname">
+    <br>
+    Last Name: <input type="text" id="lname">
+    <br>
+    Birthday: <input type="date" id="birthday">
+    <br>
+    <button onclick="checkUserName()" type="button">Accept</button>
+    <br>
+    <p id="feedback" style="color: red;"></p>
+</div>
+
+<script>
+    // put your JavaScript code to read HTML inputs
+    // and validate inputs here using if statements
+    // and document.getElementById().innerHTML to display results
+    // write your JS functions here
+    function checkUserName(userName) {
+        let uid = document.getElementById("uid").value
+        console.log(uid)
+        if (uid.length < 8 || uid.length > 12) {
+            document.getElementById("feedback").innerHTML= "Invalid User ID"
+        } else {
+            for (let i=0; i<uid.length; i++) {
+                
+            }
+        }
+    }
+
+
+    // write your JS Loop For here to print the Xs
+    // use something like document.write(str.padStart(i,"x") + "<br>");
+        
+</script>
+
+</body>
+</html>
+ 
