@@ -23,17 +23,37 @@
     // and document.getElementById().innerHTML to display results
     // write your JS functions here
     function checkUserName(userName) {
+        document.getElementById("feedback").innerHTML= ""
         let uid = document.getElementById("uid").value
-        console.log(uid)
-        if (uid.length < 8 || uid.length > 12) {
-            document.getElementById("feedback").innerHTML= "Invalid User ID"
-        } else {
-            for (let i=0; i<uid.length; i++) {
-                
+        let length = false
+        let number = false
+        let lowerCase = false
+        let upperCase = false
+
+        if (uid.length > 8 || uid.length < 12) {
+            length = true
+        } 
+        for (let i=0; i<uid.length; i++) {
+            if (!isNaN(parseInt(uid[i]))) {
+                number = true
             }
         }
+        for (let i=0; i<uid.length; i++) {
+            if (uid[i] != uid[i].toLowerCase()) {  
+                lowerCase = true
+            }
+        }
+        for (let i=0; i<uid.length; i++) {
+            if (uid[i] != uid[i].toUpperCase()) {
+                upperCase = true
+            }
+        }
+        if (length && number && lowerCase && upperCase) {
+            console.log("my beamish boy")
+        } else {
+            document.getElementById("feedback").innerHTML= "Invalid User ID"
+        }        
     }
-
 
     // write your JS Loop For here to print the Xs
     // use something like document.write(str.padStart(i,"x") + "<br>");
@@ -42,4 +62,3 @@
 
 </body>
 </html>
- 
