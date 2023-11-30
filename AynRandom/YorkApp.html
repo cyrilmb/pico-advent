@@ -18,6 +18,7 @@
     <br>
     <button onclick="checkUserInputs()" type="button">Accept</button>
     <br>
+    <p id="dateFeedback"></p>
 </div>
 
 <script>
@@ -29,13 +30,14 @@
         document.getElementById("birthdayFeedback").innerHTML= ""
 
         //Input variables
-        let uid = document.getElementById("uid").value
-        let fname = document.getElementById("fname").value
-        let lname = document.getElementById("lname").value
-        let birthday = document.getElementById("birthday").value
+        const uid = document.getElementById("uid").value
+        const fname = document.getElementById("fname").value
+        const lname = document.getElementById("lname").value
+        const birthday = document.getElementById("birthday").value
 
         console.log(uid, fname, lname, birthday)
 
+        //If input fields blank, display Invalid feedback
         if (!fname) {
             document.getElementById("fnameFeedback").innerHTML= "Invalid First Name"
         }
@@ -46,38 +48,57 @@
             document.getElementById("birthdayFeedback").innerHTML= "Invalid Birthday"
         }
 
+        //Variables to check User ID perameters
         let length = false
         let number = false
         let lowerCase = false
         let upperCase = false
 
+        //Set minimum and maximum character length
         if (uid.length > 8 || uid.length < 12) {
             length = true
         } 
+        //Check for int
         for (let i=0; i<uid.length; i++) {
             if (!isNaN(parseInt(uid[i]))) {
                 number = true
             }
         }
+        //Check for lower case
         for (let i=0; i<uid.length; i++) {
             if (uid[i] != uid[i].toLowerCase()) {  
                 lowerCase = true
             }
         }
+        //Check for upper case
         for (let i=0; i<uid.length; i++) {
             if (uid[i] != uid[i].toUpperCase()) {
                 upperCase = true
             }
         }
         if (length && number && lowerCase && upperCase) {
-            console.log("my beamish boy")
+            dateDiff()
         } else {
             document.getElementById("uidFeedback").innerHTML= "Invalid User ID"
         }        
     }
 
-    function dateDiff(date) {
-        // let dateNow = 
+    function dateDiff() {
+         const today = new Date()
+         const birthday = new Date(document.getElementById("birthday").value)
+         const fname = document.getElementById("fname").value
+         const lname = document.getElementById("lname").value
+
+         let difference = today.getTime() - birthday.getTime()
+
+         let days = Math.floor(difference / (1000*60*60*24))
+
+         if (days < 365*18) {
+            document.getElementById("dateFeedback").innerHTML= "You are probably not old enough for this class!"
+         } else {
+            document.getElementById("dateFeedback").innerHTML= `${fname} ${lname} you have been breathing for ${days} days!`
+         }
+
     }
 
     // write your JS Loop For here to print the Xs
