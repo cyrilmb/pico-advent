@@ -5,26 +5,47 @@
 
 <div>
     User ID: <input type="text" id="uid">
+    <p id="uidFeedback" style="color: red; display: inline-block"></p>
     <br>
     First Name: <input type="text" id="fname">
+    <p id="fnameFeedback" style="color: red; display: inline-block"></p>
     <br>
     Last Name: <input type="text" id="lname">
+    <p id="lnameFeedback" style="color: red; display: inline-block"></p>
     <br>
     Birthday: <input type="date" id="birthday">
+    <p id="birthdayFeedback" style="color: red; display: inline-block"></p>
     <br>
-    <button onclick="checkUserName()" type="button">Accept</button>
+    <button onclick="checkUserInputs()" type="button">Accept</button>
     <br>
-    <p id="feedback" style="color: red;"></p>
 </div>
 
 <script>
-    // put your JavaScript code to read HTML inputs
-    // and validate inputs here using if statements
-    // and document.getElementById().innerHTML to display results
-    // write your JS functions here
-    function checkUserName(userName) {
-        document.getElementById("feedback").innerHTML= ""
+    function checkUserInputs() {
+        //Clear feedback text on button click
+        document.getElementById("uidFeedback").innerHTML= ""
+        document.getElementById("fnameFeedback").innerHTML= ""
+        document.getElementById("lnameFeedback").innerHTML= ""
+        document.getElementById("birthdayFeedback").innerHTML= ""
+
+        //Input variables
         let uid = document.getElementById("uid").value
+        let fname = document.getElementById("fname").value
+        let lname = document.getElementById("lname").value
+        let birthday = document.getElementById("birthday").value
+
+        console.log(uid, fname, lname, birthday)
+
+        if (!fname) {
+            document.getElementById("fnameFeedback").innerHTML= "Invalid First Name"
+        }
+        if (!lname) {
+            document.getElementById("lnameFeedback").innerHTML= "Invalid Last Name"
+        }
+        if (!birthday) {
+            document.getElementById("birthdayFeedback").innerHTML= "Invalid Birthday"
+        }
+
         let length = false
         let number = false
         let lowerCase = false
@@ -51,8 +72,12 @@
         if (length && number && lowerCase && upperCase) {
             console.log("my beamish boy")
         } else {
-            document.getElementById("feedback").innerHTML= "Invalid User ID"
+            document.getElementById("uidFeedback").innerHTML= "Invalid User ID"
         }        
+    }
+
+    function dateDiff(date) {
+        // let dateNow = 
     }
 
     // write your JS Loop For here to print the Xs
