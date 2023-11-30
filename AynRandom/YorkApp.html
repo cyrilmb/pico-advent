@@ -35,8 +35,6 @@
         const lname = document.getElementById("lname").value
         const birthday = document.getElementById("birthday").value
 
-        console.log(uid, fname, lname, birthday)
-
         //If input fields blank, display Invalid feedback
         if (!fname) {
             document.getElementById("fnameFeedback").innerHTML= "Invalid First Name"
@@ -89,6 +87,7 @@
          const fname = document.getElementById("fname").value
          const lname = document.getElementById("lname").value
 
+         //getTime converts to milliseconds
          let difference = today.getTime() - birthday.getTime()
 
          let days = Math.floor(difference / (1000*60*60*24))
@@ -98,11 +97,14 @@
          } else {
             document.getElementById("dateFeedback").innerHTML= `${fname} ${lname} you have been breathing for ${days} days!`
          }
-
     }
 
-    // write your JS Loop For here to print the Xs
-    // use something like document.write(str.padStart(i,"x") + "<br>");
+    //Write x's
+    for (let i=0; i<21; i++) {
+        let str = ""
+        str = str.padStart(i, "x")
+        document.write(`${str} <br>`)
+    }
         
 </script>
 
